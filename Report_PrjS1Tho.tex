@@ -3,7 +3,11 @@
 \usepackage{enumerate}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usetikzlibrary{plotmarks}
+\usepackage{amssymb}
+\usepackage{xcolor}
 
+\usepackage{verbatim}
 %\usepackage{enumitem}
 \usepackage{listings}
 
@@ -63,12 +67,83 @@
 
 \subsection{What?}
 Mean shift is a non-parametric feature-space analysis technique for locating the maxima of a density function, a so-called mode-seeking algorithm\textsuperscript{2.1}
+\pgfplotsset{grid style={dashed,gray}}
+\pgfplotsset{minor grid style={dashed,red}}
+\pgfplotsset{major grid style={dotted,green!50!black}}
+
 
 \begin{tikzpicture}
-\pgfplotsset{compat=1.11}
-\begin{axis}[axis lines=middle,xlabel=$x$,ylabel=$y$,enlargelimits]
-\end{axis}
+    \begin{axis}[
+    		axis lines=left,
+                 xtick={0,1,...,10},ytick = {0,0.2,...,1},
+                 grid=both,
+                 xlabel = {Mark},
+                 ylabel = {Probability}
+                 ]
+                 %First Mode
+\addplot [
+    domain=3:7, 
+    samples=100, 
+    color=red,
+]
+{-0.125*x^2 + 1.25*x - 2.625};
+
+\addplot [
+    domain=0:12, 
+    samples=10, 
+    color=red,
+    ]
+    {0};
+    \addplot [
+    domain=0:12, 
+    samples=2
+  %  color=red,
+    ]
+    {1};
+%Second mode
+\addplot [
+    domain=8:10, 
+    samples=100, 
+    color=red,
+    ]
+    {-0.2*x^2 + 3.6*x - 16};
+ 
+ %First Mode
+
+\draw[red,fill,thick] (50,50) circle (0.05cm);
+
+ %S1
+\draw[red,thick] (50,4) circle (0.2cm);
+\node[red,above] at (axis cs:5,0.1){\small{S1}};
+ %S2
+\draw[blue,thick] (40,4) circle (0.2cm);
+\node[blue,left] at (axis cs:4,0.08){\small{S2}};
+ %S3
+\draw[blue,thick] (45,4) circle (0.2cm);
+\node[blue,above] at (axis cs:4.5,0.06){\small{S3}};
+ %S4
+\draw[blue,thick] (57,4) circle (0.2cm);
+\node[blue,above] at (axis cs:5.7,0.06){\small{S4}};
+ %S5
+\draw[blue,thick] (60,4) circle (0.2cm);
+\node[blue,right] at (axis cs:6,0.08){\small{S5}};
+
+ %Second Mode
+ 
+ \draw[red,fill,thick] (90,20) circle (0.05cm);
+ %S6
+\draw[red,thick] (90,4) circle (0.2cm);
+\node[red,above] at (axis cs:9,0.1){\small{S6}};
+ %S7
+\draw[blue,thick] (87,4) circle (0.2cm);
+\node[blue,left] at (axis cs:8.7,0.08){\small{S7}};
+ %S8
+\draw[blue,thick] (95,4) circle (0.2cm);
+\node[blue,right] at (axis cs:9.5,0.08){\small{S8}};
+    \end{axis}
 \end{tikzpicture}
+
+
 \subsection{Why?}
 
 \subsection{How?}

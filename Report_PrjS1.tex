@@ -1,6 +1,9 @@
 \documentclass[13pt,a4paper]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{enumerate}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
 %\usepackage{enumitem}
 \usepackage{listings}
 
@@ -59,7 +62,13 @@
 \section{Non-parametric: Meanshift}
 
 \subsection{What?}
+Mean shift is a non-parametric feature-space analysis technique for locating the maxima of a density function, a so-called mode-seeking algorithm\textsuperscript{2.1}
 
+\begin{tikzpicture}
+\pgfplotsset{compat=1.11}
+\begin{axis}[axis lines=middle,xlabel=$x$,ylabel=$y$,enlargelimits]
+\end{axis}
+\end{tikzpicture}
 \subsection{Why?}
 
 \subsection{How?}
@@ -79,6 +88,6 @@
 	
 	
 \section{Conclusion}
-
+\section{Reference}
 
 \end{document}

@@ -2,6 +2,133 @@
 
 \subsection{What?}
 
+Mean shift  is a popular non-parametric clustering algorithm based on the
+idea of associating each data point to a mode of the underlying probability density
+function\textsuperscript{2.1}.{\linebreak}
+
+Assuming that we have a dataset of students and corresponding mark for each of them 
+in final exam as the table below. How do we categorize these students into groups base on their marks?
+\begin{center}
+ \begin{tabular}{||c c c||} 
+ \hline
+ No & Student & Mark \\ [0.5ex] 
+ \hline\hline
+ 1 & S1 & 5.0 \\ 
+ \hline
+ 2 & S2 & 4.0 \\
+ \hline
+ 3 & S3 & 4.5 \\
+ \hline
+ 4 & S4 & 5.7 \\
+ \hline
+ 5 & S5 & 6.0 \\ 
+  \hline
+ 6 & S6 & 9.0 \\ 
+  \hline
+ 7 & S7 & 8.7 \\ 
+  \hline
+ 8 & S8 & 9.5 \\ 
+ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+
+Meanshift is a powerful tool for us in this case although the idea behind it is very simple.
+Imagine that the set of marks was sampled from a probability distribution. Meanshift seeks for modes of  the underlying distribution for this set of marks. Number of modes corresponds to the number of groups of students.
+\pgfplotsset{grid style={dashed,gray}}
+\pgfplotsset{minor grid style={dashed,red}}
+\pgfplotsset{major grid style={dotted,green!50!black}}
+
+%Probability plot
+\begin{tikzpicture}
+	\begin{axis}[
+	axis lines=left,
+	xtick={0,1,...,10},ytick = {0,0.2,...,1},
+	grid=both,
+	xlabel = {Mark},
+	ylabel = {Probability}
+	]
+		%First Mode
+		\addplot [
+		domain=3:7,
+		samples=100,
+		color=red,
+		]
+		{-0.125*x^2 + 1.25*x - 2.625};
+		
+		\addplot [
+		 domain=0:3,
+		 samples=10, 
+		 color=red,
+		 ]
+		 {0.002};
+		 \addplot [
+		 domain=7:8,
+		 samples=10, 
+		 color=red,
+		 ]
+		 {0.002};
+		 \addplot [
+		 domain=10:11,
+		 samples=10, 
+		 color=red,
+		 ]
+		 {0.002};
+		 \addplot [
+		domain=0:12, 
+		samples=2,
+		color = white
+		]
+		{1};
+		%Second mode
+		\addplot [
+		domain=8:10, 
+		samples=100, 
+		color=red,
+		]
+		{-0.2*x^2 + 3.6*x - 16};
+		 
+		 %First Mode
+		
+		\draw[red,fill,thick] (50,50) circle (0.05cm);
+		\node[black,above] at (axis cs:5,0.5){\small{Mode 1}};
+		 %S1
+		\draw[red,thick] (50,4) circle (0.2cm);
+		\node[red,above] at (axis cs:5,0.1){\small{S1}};
+		 %S2
+		\draw[blue,thick] (40,4) circle (0.2cm);
+		\node[blue,left] at (axis cs:4,0.08){\small{S2}};
+		 %S3
+		\draw[blue,thick] (45,4) circle (0.2cm);
+		\node[blue,above] at (axis cs:4.5,0.06){\small{S3}};
+		 %S4
+		\draw[blue,thick] (57,4) circle (0.2cm);
+		\node[blue,above] at (axis cs:5.7,0.06){\small{S4}};
+		 %S5
+		\draw[blue,thick] (60,4) circle (0.2cm);
+		\node[blue,right] at (axis cs:6,0.08){\small{S5}};
+		
+		 %Second Mode
+		 
+		 \draw[red,fill,thick] (90,20) circle (0.05cm);
+		 \node[black,above] at (axis cs:9,0.2){\small{Mode 2}};
+		 %S6
+		\draw[red,thick] (90,4) circle (0.2cm);
+		\node[red,above] at (axis cs:9,0.1){\small{S6}};
+		 %S7
+		\draw[blue,thick] (87,4) circle (0.2cm);
+		\node[blue,left] at (axis cs:8.7,0.08){\small{S7}};
+		 %S8
+		\draw[blue,thick] (95,4) circle (0.2cm);
+		\node[blue,right] at (axis cs:9.5,0.08){\small{S8}};
+		
+		%Legend
+		\addlegendentry{Probability Distribution Function}
+	\end{axis}
+\end{tikzpicture}
+
+As can be seen from the graph above, we have two groups of students correspond to two modes of probability distribution function
+
 \subsection{Why?}
 
 \subsection{How?}

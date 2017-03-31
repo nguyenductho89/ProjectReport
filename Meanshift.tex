@@ -142,6 +142,13 @@ The pseudo code for Gradient Ascent algorithm:\\
 Repeat until convergence: \{\\
 f(x) := f(x) + f'(x)a;\\
 \}
+\subsubsection{Meanshift and Gradient Ascent}
+
+Given n data points x\textsubscript{i} i = 1,...,n in the d-dimensional space R\textsuperscript{d}, the multivariate kernel density estimator with kernel K(x) and a sysmmetric positive definite dxd banwidth matrix H, computed in the point x is given by:
+	\[f(x) = \frac{1}{n}\sum_{i=1}^{n}K_H(x-x_i)\]
+and Mean Shift Vector is given by:
+	\[m(x) = \frac{\sum_{i=1}^{n}x_ig}{\sum_{i=1}^{n}g}-x\]
+	 \[ \vu{a} = \frac{\vb{a}}{\norm{\vb{a}}} \]
 \subsection{Why?}
 
 \subsection{How?}

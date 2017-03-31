@@ -1,7 +1,7 @@
 \section{Non-parametric: Meanshift}
 
 \subsection{What?}
-\subsubsection{Clustering and Probability Density Function}
+\subsubsection{Clustering and Modes of Probability Density Function}
 Mean shift  is a popular non-parametric clustering algorithm based on the
 idea of associating each data point to a mode of the underlying probability density
 function\textsuperscript{2.1}.Meanshift is a powerful tool for us in this case although the idea behind it is very simple. {\linebreak}
@@ -128,13 +128,14 @@ Imagine that the set of marks was sampled from a probability distribution. We se
 
 As can be seen from the graph above, we have two groups of students correspond to two modes of probability distribution function. 
 With Mode 1, we have first group which includes: S1, S2, S3, S4, S5.  Similarly, correspoding to Mode 2 is second group, which includes : S6, S7, S8. That's why we can use mode-seeking algorithms as a solution of Clustering problem.
-\subsubsection{Gradient Ascent}
-The Taylor series of function f(x) that is infinitely differentiable at  number a is the power series\textsuperscript{[2.2]}:
+\subsubsection{Gradient Ascent and Modes of Probability Density Function}
+The Taylor series of a function f(x) is described by the equation \textsuperscript{[2.2]}:
 \[
-    f(x+\varepsilon) = f(x) + \frac{f'(x)}{1!}\varepsilon+\frac{f''(x)}{2!}\varepsilon^2+\frac{f'''(x)}{3!}\varepsilon^3+...+\frac{f^{(n)}(x)}{n!}\varepsilon^n
+    f(x+a) = f(x) + \frac{f'(x)}{1!}a+\frac{f''(x)}{2!}a^2+\frac{f'''(x)}{3!}a^3+...+\frac{f^{(n)}(x)}{n!}a^n
 \]
-\[\Longrightarrow f(x+\varepsilon) \approx f(x) + \frac{f'(x)}{1!}\varepsilon =  f(x) + f'(x)\varepsilon\]
-
+\[\Longrightarrow f(x+a) \approx f(x) + \frac{f'(x)}{1!}a =  f(x) + f'(x)a\]
+with a: learning rate,  f'(x): derivative or gradient of f(x)\\
+Back to previous example in 3.1.1, let's say f(x) is the probability distribution function. As the illustration of the below graph, from any point on the graph of f(x), we continously move a small step f'(x).a$>$0 (Gradient Ascent) until reaching a local mode of f(x).\\ 
 \includegraphics[width=\textwidth]{gradientAscent}
 
 \subsection{Why?}

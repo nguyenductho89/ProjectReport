@@ -137,7 +137,11 @@ The Taylor series of a function f(x) is described by the equation \textsuperscri
 with a: learning rate,  f'(x): derivative or gradient of f(x)\\
 Back to previous example in 3.1.1, let's say f(x) is the probability distribution function. As the illustration of the below graph, from any point on the graph of f(x), we continously move a small step f'(x).a$>$0 (Gradient Ascent) until reaching a local mode of f(x).\\ 
 \includegraphics[width=\textwidth]{gradientAscent}
-
+Important result: We can find modes of a probability density function by shifting a proper gradient ascent step from any point of that function.
+The pseudo code for Gradient Ascent algorithm:\\
+Repeat until convergence: \{\\
+f(x) := f(x) + f'(x)a;\\
+\}
 \subsection{Why?}
 
 \subsection{How?}

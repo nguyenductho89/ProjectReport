@@ -144,11 +144,11 @@ f(x) := f(x) + f'(x)a;\\
 \}
 \subsubsection{Meanshift and Gradient Ascent}
 
-Given n data points x\textsubscript{i} i = 1,...,n in the d-dimensional space R\textsuperscript{d}, the multivariate kernel density estimator with kernel K(x) and a sysmmetric positive definite dxd banwidth matrix H, computed in the point x is given by:
-	\[f(x) = \frac{1}{n}\sum_{i=1}^{n}K_H(x-x_i)\]
-and Mean Shift Vector is given by:
-	\[m(x) = \frac{\sum_{i=1}^{n}x_ig}{\sum_{i=1}^{n}g}-x\]
-	 \[ \vu{a} = \frac{\vb{a}}{\norm{\vb{a}}} \]
+According to Domaniciu with given n data points x\textsubscript{i} i = 1,...,n in the d-dimensional space R\textsuperscript{d}, the multivariate kernel density estimator (Probability Density Function) is f(x) and the mean shift vector of f(x) is defined as:
+	%\[f(x) = \frac{1}{n}\sum_{i=1}^{n}K_H(x-x_i)\]
+	%(\norm{\vb{\frac{x-x_i}{h}}}^2})
+	\[m(x) = \frac{\sum_{i=1}^{n}x_i{w(x_i) }}{\sum_{i=1}^{n}{w(x_i) }) }-x\]
+Domaniciu also shows that m(x) is propotional to the gradient of f(x):$\nabla$f(x). This is the keypoint of mean
 \subsection{Why?}
 
 \subsection{How?}

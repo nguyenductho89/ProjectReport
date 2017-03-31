@@ -139,20 +139,33 @@ Back to previous example in 3.1.1, let's say f(x) is the probability distributio
 \includegraphics[width=\textwidth]{gradientAscent}
 Important result: We can find modes of a probability density function by shifting a proper gradient ascent step from any point of that function. Generalization in n+1 dimensional space \[x=[x_0,x_1,...,x_n]\]
 The pseudo code for Gradient Ascent algorithm of a dataset S of m points \[S = {x^0,x^1,...,x^m}\]
+\fbox{\begin{minipage}{\textwidth}
+\textit{
 Repeat until convergence \textbraceleft\\ 
-\hspace{5cm}For each x in S \textbraceleft
-\[x_i := x_i + f'(x_i)a;\]
-\textbraceright\\
-\textbraceright
+For each x in S \textbraceleft
+\[x := x + f'(x)a;\]\hspace{2.5cm}\textbraceright\\
+\hspace{5cm}\textbraceright
+}
+\end{minipage}}
+
 \subsubsection{Mean Shift Vector}
 
-According to Domaniciu with given n data points x\textsubscript{i} i = 1,...,n in the d-dimensional space R\textsuperscript{d}, the multivariate kernel density estimator (Probability Density Function) is f(x) and the mean shift vector of f(x) is defined as:
+According to Domaniciu with given m data points x\textsuperscript{k} k = 1,...,m in the d-dimensional space R\textsuperscript{d}, the multivariate kernel density estimator (Probability Density Function) is f(x) and the mean shift vector of f(x) is defined as:
 	%\[f(x) = \frac{1}{n}\sum_{i=1}^{n}K_H(x-x_i)\]
-	%(\norm{\vb{\frac{x-x_i}{h}}}^2})
-	\[m(x) = \frac{\sum_{i=1}^{n}x_i{w(x_i) }}{\sum_{i=1}^{n}{w(x_i) }) }-x\]
-with a bandwith constant h we have \[w(x_i) = exp(-\frac{\norm{\vb{{x-x_i}}}^2}{2{h}^2})\] is a Gaussian Kernel (For simplicity purpose, we only using Gaussian Kernel in this report)
+	%(\norm{\vb{\frac{x-x^i}{h}}}^2})
+	\[m(x) = \frac{\sum_{k=1}^{m}x^i{w(x^k) }}{\sum_{k=1}^{m}{w(x^k) }) }-x\]
+with a bandwith constant h we have \[w(x^k) = exp(-\frac{\norm{\vb{{x-x^k}}}^2}{2{h}^2})\] is a Gaussian Kernel (For simplicity purpose, we only using Gaussian Kernel in this report)
 \subsection{Why?}
-Domaniciu also shows that m(x) is propotional to the gradient of f(x):$\nabla$f(x). This is the keypoint of mean
+Domaniciu also shows that m(x) is propotional to the gradient of f(x): m(x) = c.f'(x) with a constant c.\\ The pseudo code of Gradient Ascent algorithm in 3.1.2 becomes:\\\\
+\fbox{\begin{minipage}{\textwidth}
+\textit{
+Repeat until convergence \textbraceleft\\ 
+For each x in S \textbraceleft
+\[x := x + m(x)\]or\[x:= \frac{\sum_{k=1}^{m}x^i{w(x^k) }}{\sum_{k=1}^{m}{w(x^k) }) }\]\hspace{2.5cm}\textbraceright\\
+\hspace{5cm}\textbraceright
+}
+\end{minipage}}
+\\\\Instead of computing the gradient of f(x), which is sometimes impossible, now we can compute \[ \frac{\sum_{k=1}^{m}x^i{w(x^k) }}{\sum_{k=1}^{m}{w(x^k) }) }\] that is defenitely doable. 
 \subsection{How?}
 
 \subsection{Advantages and disadvantages}

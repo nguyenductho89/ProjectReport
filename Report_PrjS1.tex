@@ -12,20 +12,22 @@
 \usepackage{listings}
 \usepackage{polynom}
 \usepackage{amsmath}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 
 \addcontentsline{toc}{chapter}{Bibliography}
 
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
-\usepackage{graphicx}
-\graphicspath{ {images/} }
 
 \setlength{\parindent}{10pt}
 \newcommand{\forceindent}{\leavevmode{\parindent=1em\indent}}
 %\linespread{1.5}
 \usepackage{setspace}
 \doublespacing
-
+\setcounter{secnumdepth}{5}
 \begin{document}
 	
 \input{Cover}	
@@ -36,6 +38,6 @@
 \input{Meanshift}
 \input{Evaluation}
 \input{Conclusion}
-%\input{Reference}
+\input{Reference}
 
 \end{document}

@@ -137,20 +137,22 @@ The Taylor series of a function f(x) is described by the equation \textsuperscri
 with a: learning rate,  f'(x): derivative or gradient of f(x)\\
 Back to previous example in 3.1.1, let's say f(x) is the probability distribution function. As the illustration of the below graph, from any point on the graph of f(x), we continously move a small step f'(x).a$>$0 (Gradient Ascent) until reaching a local mode of f(x).\\ 
 \includegraphics[width=\textwidth]{gradientAscent}
-Important result: We can find modes of a probability density function by shifting a proper gradient ascent step from any point of that function.
-The pseudo code for Gradient Ascent algorithm:\\
-Repeat until convergence: \{\\
-f(x) := f(x) + f'(x)a;\\
-\}
-\subsubsection{Meanshift and Gradient Ascent}
+Important result: We can find modes of a probability density function by shifting a proper gradient ascent step from any point of that function. Generalization in n+1 dimensional space \[x=[x_0,x_1,...,x_n]\]
+The pseudo code for Gradient Ascent algorithm of a dataset S of m points \[S = {x^0,x^1,...,x^m}\]
+Repeat until convergence \textbraceleft\\ 
+\hspace{5cm}For each x in S \textbraceleft
+\[x_i := x_i + f'(x_i)a;\]
+\textbraceright\\
+\textbraceright
+\subsubsection{Mean Shift Vector}
 
 According to Domaniciu with given n data points x\textsubscript{i} i = 1,...,n in the d-dimensional space R\textsuperscript{d}, the multivariate kernel density estimator (Probability Density Function) is f(x) and the mean shift vector of f(x) is defined as:
 	%\[f(x) = \frac{1}{n}\sum_{i=1}^{n}K_H(x-x_i)\]
 	%(\norm{\vb{\frac{x-x_i}{h}}}^2})
 	\[m(x) = \frac{\sum_{i=1}^{n}x_i{w(x_i) }}{\sum_{i=1}^{n}{w(x_i) }) }-x\]
-Domaniciu also shows that m(x) is propotional to the gradient of f(x):$\nabla$f(x). This is the keypoint of mean
+with a bandwith constant h we have \[w(x_i) = exp(-\frac{\norm{\vb{{x-x_i}}}^2}{2{h}^2})\] is a Gaussian Kernel (For simplicity purpose, we only using Gaussian Kernel in this report)
 \subsection{Why?}
-
+Domaniciu also shows that m(x) is propotional to the gradient of f(x):$\nabla$f(x). This is the keypoint of mean
 \subsection{How?}
 
 \subsection{Advantages and disadvantages}

@@ -1,13 +1,13 @@
 \section{Non-parametric: Meanshift}
 
 \subsection{What?}
-
+\subsubsection{Clustering and Probability Density Function}
 Mean shift  is a popular non-parametric clustering algorithm based on the
 idea of associating each data point to a mode of the underlying probability density
-function\textsuperscript{2.1}.{\linebreak}
+function\textsuperscript{2.1}.Meanshift is a powerful tool for us in this case although the idea behind it is very simple. {\linebreak}
 
 Assuming that we have a dataset of students and corresponding mark for each of them 
-in final exam as the table below. How do we categorize these students into groups base on their marks?
+in final exam as the table below. How do we categorize these students into groups (clustering) base on their marks?
 \begin{center}
  \begin{tabular}{||c c c||} 
  \hline
@@ -33,8 +33,7 @@ in final exam as the table below. How do we categorize these students into group
 \end{tabular}
 \end{center}
 
-Meanshift is a powerful tool for us in this case although the idea behind it is very simple.
-Imagine that the set of marks was sampled from a probability distribution. Meanshift seeks for modes of  the underlying distribution for this set of marks. Number of modes corresponds to the number of groups of students.
+Imagine that the set of marks was sampled from a probability distribution. We seek for the modes of  the underlying distribution for this set of marks. Number of modes corresponds to the number of groups of students.
 \pgfplotsset{grid style={dashed,gray}}
 \pgfplotsset{minor grid style={dashed,red}}
 \pgfplotsset{major grid style={dotted,green!50!black}}
@@ -128,10 +127,20 @@ Imagine that the set of marks was sampled from a probability distribution. Means
 \end{tikzpicture}
 
 As can be seen from the graph above, we have two groups of students correspond to two modes of probability distribution function. 
-With Mode 1, we have first group which includes: S1, S2, S3, S4, S5.  Similarly, correspoding to Mode 2 is second group, which includes : S6, S7, S8.
+With Mode 1, we have first group which includes: S1, S2, S3, S4, S5.  Similarly, correspoding to Mode 2 is second group, which includes : S6, S7, S8. That's why we can use mode-seeking algorithms as a solution of Clustering problem.
+\subsubsection{Gradient Ascent}
+The Taylor series of function f(x) that is infinitely differentiable at  number a is the power series\textsuperscript{[2.2]}:
+\[
+    f(x+\varepsilon) = f(x) + \frac{f'(x)}{1!}\varepsilon+\frac{f''(x)}{2!}\varepsilon^2+\frac{f'''(x)}{3!}\varepsilon^3+...+\frac{f^{(n)}(x)}{n!}\varepsilon^n
+\]
+\[\Longrightarrow f(x+\varepsilon) \approx f(x) + \frac{f'(x)}{1!}\varepsilon =  f(x) + f'(x)\varepsilon\]
+
+\includegraphics[width=\textwidth]{gradientAscent}
 
 \subsection{Why?}
 
 \subsection{How?}
 
 \subsection{Advantages and disadvantages}
+
+2.2 https://web.stanford.edu/class/cs168/l/l5.pdf

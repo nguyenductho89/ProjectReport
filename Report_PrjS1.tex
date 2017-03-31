@@ -1,4 +1,6 @@
-\documentclass[13pt,a4paper]{report}
+\documentclass[13pt]{report}
+\usepackage[a4paper, total={6in, 10in}]{geometry}
+
 \usepackage[utf8]{inputenc}
 \usepackage{enumerate}
 \usepackage{tikz}
@@ -10,10 +12,20 @@
 \usepackage{listings}
 \usepackage{polynom}
 \usepackage{amsmath}
+
+\addcontentsline{toc}{chapter}{Bibliography}
+
 \renewcommand{\thesection}{\arabic{section}}
 \renewcommand\theparagraph{\thesubsubsubsection.\arabic{paragraph}} % optional; useful if paragraphs are to be numbered
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+
+\setlength{\parindent}{10pt}
+\newcommand{\forceindent}{\leavevmode{\parindent=1em\indent}}
+%\linespread{1.5}
+\usepackage{setspace}
+\doublespacing
+
 \begin{document}
 	
 \input{Cover}	
@@ -24,5 +36,6 @@
 \input{Meanshift}
 \input{Evaluation}
 \input{Conclusion}
+%\input{Reference}
 
 \end{document}

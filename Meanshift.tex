@@ -1,10 +1,10 @@
 \section{Non-parametric: Meanshift}
 
 \subsection{What?}
-\subsubsection{Clustering and Modes of Probability Density Function}
-Mean shift  is a popular non-parametric clustering algorithm based on the
+Mean Shift  is a popular non-parametric clustering algorithm based on the
 idea of associating each data point to a mode of the underlying probability density
-function\textsuperscript{2.1}.Meanshift is a powerful tool for us in this case although the idea behind it is very simple. {\linebreak}
+function\textsuperscript{2.1}. Mean Shift can be consider as a Gradient Ascent Algorithm
+\subsubsection{Clustering and Modes of Probability Density Function}
 
 Assuming that we have a dataset of students and corresponding mark for each of them 
 in final exam as the table below. How do we categorize these students into groups (clustering) base on their marks?
@@ -149,7 +149,6 @@ For each x in S \textbraceleft
 \end{minipage}}
 
 \subsubsection{Mean Shift Vector}
-
 According to Domaniciu with given m data points x\textsuperscript{k} k = 1,...,m in the d-dimensional space R\textsuperscript{d}, the multivariate kernel density estimator (Probability Density Function) is f(x) and the mean shift vector of f(x) is defined as:
 	%\[f(x) = \frac{1}{n}\sum_{i=1}^{n}K_H(x-x_i)\]
 	%(\norm{\vb{\frac{x-x^i}{h}}}^2})

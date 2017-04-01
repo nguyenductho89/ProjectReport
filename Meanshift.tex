@@ -126,7 +126,7 @@ Imagine that the set of marks was sampled from a probability distribution. We se
 	\end{axis}
 \end{tikzpicture}
 
-As can be seen from the graph above, we have two groups of students correspond to two modes of probability distribution function. 
+As can be seen from the graph above, we have two groups of students correspond to two modes of probability density function. 
 With Mode 1, we have first group which includes: S1, S2, S3, S4, S5.  Similarly, correspoding to Mode 2 is second group, which includes : S6, S7, S8. That's why we can use mode-seeking algorithms as a solution of Clustering problem.
 \subsubsection{Gradient Ascent and Modes of Probability Density Function}
 The Taylor series of a function f(x) is described by the equation \textsuperscript{[2.2]}:
@@ -135,13 +135,13 @@ The Taylor series of a function f(x) is described by the equation \textsuperscri
 \]
 \[\Longrightarrow f(x+a) \approx f(x) + \frac{f'(x)}{1!}a =  f(x) + f'(x)a\]
 with a: learning rate,  f'(x): derivative or gradient of f(x)\\
-Back to previous example in 3.1.1, let's say f(x) is the probability distribution function. As the illustration of the below graph, from any point on the graph of f(x), we continously move a small step f'(x).a$>$0 (Gradient Ascent) until reaching a local mode of f(x).\\ 
+Back to previous example in 3.1.1, let's say f(x) is the probability density function. As the illustration of the below graph, from any point on the graph of f(x), we continously move a small step f'(x).a$>$0 (Gradient Ascent) until reaching a local mode of f(x).\\ 
 \includegraphics[width=\textwidth]{gradientAscent}
 Important result: We can find modes of a probability density function by shifting a proper gradient ascent step from any point of that function. Generalization in n+1 dimensional space \[x=[x_0,x_1,...,x_n]\]
 The pseudo code for Gradient Ascent algorithm of a dataset S of m points \[S = {x^0,x^1,...,x^m}\]
 \fbox{\begin{minipage}{\textwidth}
 \textit{
-Repeat until convergence \textbraceleft\\ 
+While(f'(x)a $>$ 0) \textbraceleft\\ 
 For each x in S \textbraceleft
 \[x := x + f'(x)a;\]\hspace{2.5cm}\textbraceright\\
 \hspace{5cm}\textbraceright
@@ -155,18 +155,17 @@ According to Domaniciu with given m data points x\textsuperscript{k} k = 1,...,m
 	%(\norm{\vb{\frac{x-x^i}{h}}}^2})
 	\[m(x) = \frac{\sum_{k=1}^{m}x^i{w(x^k) }}{\sum_{k=1}^{m}{w(x^k) }) }-x\]
 with a bandwith constant h we have \[w(x^k) = exp(-\frac{\norm{\vb{{x-x^k}}}^2}{2{h}^2})\] is a Gaussian Kernel (For simplicity purpose, we only using Gaussian Kernel in this report)
-\subsection{Why?}
-Domaniciu also shows that m(x) is propotional to the gradient of f(x): m(x) = c.f'(x) with a constant c.\\ The pseudo code of Gradient Ascent algorithm in 3.1.2 becomes:\\\\
+\subsection{Why and How}
+Domaniciu also shows that m(x) is propotional to the gradient of f(x): m(x) = f'(x).c with a constant c.\\ With the weighted mean \[\bar{m} = \frac{\sum_{k=1}^{m}x^i{w(x^k) }}{\sum_{k=1}^{m}{w(x^k) }) }\]The pseudo code of Gradient Ascent algorithm in 3.1.2 becomes:\\\\
 \fbox{\begin{minipage}{\textwidth}
 \textit{
-Repeat until convergence \textbraceleft\\ 
+While($\bar{m} > 0$) \textbraceleft\\ 
 For each x in S \textbraceleft
-\[x := x + m(x)\]or\[x:= \frac{\sum_{k=1}^{m}x^i{w(x^k) }}{\sum_{k=1}^{m}{w(x^k) }) }\]\hspace{2.5cm}\textbraceright\\
+\[x := x + m(x)\]\hspace{5cm}or\[x:= \bar{m}\]\hspace{2.5cm}\textbraceright\\
 \hspace{5cm}\textbraceright
 }
 \end{minipage}}
-\\\\Instead of computing the gradient of f(x), which is sometimes impossible, now we can compute \[ \frac{\sum_{k=1}^{m}x^i{w(x^k) }}{\sum_{k=1}^{m}{w(x^k) }) }\] that is defenitely doable. 
-\subsection{How?}
+\\\\Instead of computing the gradient of f(x), which is sometimes impossible, now we can compute the weighted mean $\bar{m}$, that is defenitely doable. 
 
 \subsection{Advantages and disadvantages}
 
